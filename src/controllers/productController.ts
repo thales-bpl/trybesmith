@@ -14,7 +14,18 @@ class ProductController {
       return res.status(200).json(allProducts);
     } catch (error) {
       console.log(error);
-      return res.status(400).json(error);
+      return res.status(500).json(error);
+    }
+  };
+
+  public post = async (req: Request, res: Response) => {
+    try {
+      const { body } = req;
+      const newProduct = await this.productService.post(body);
+      return res.status(201).json(newProduct);
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json(error);
     }
   };
 }
