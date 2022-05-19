@@ -1,0 +1,1 @@
+docker exec -it trybesmith_db bash
