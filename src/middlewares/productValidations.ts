@@ -1,27 +1,27 @@
 import { Request, Response, NextFunction } from 'express';
 
 const NAME_REQUIRED = {
-  error: 'Name is required',
+  message: '"name" is required',
 };
 
 const INVALID_NAME_TYPE = {
-  error: 'Name must be a string',
+  message: '"name" must be a string',
 };
 
 const INVALID_NAME_LENGTH = {
-  error: 'Name must be longer than 2 characters',
+  message: '"name" length must be at least 3 characters long',
 };
 
 const AMOUNT_REQUIRED = {
-  error: 'Amount is required',
+  message: '"amount" is required',
 };
 
 const INVALID_AMOUNT_TYPE = {
-  error: 'Amount must be a string',
+  message: '"amount" must be a string',
 };
 
 const INVALID_AMOUNT_LENGTH = {
-  error: 'Amount must be longer than 2 characters',
+  message: '"amount" length must be at least 3 characters long',
 };
 
 const validateName = (req: Request, res: Response, next: NextFunction) => {

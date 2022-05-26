@@ -9,6 +9,7 @@ echo $' === === project log === ===
     no terminal do container db: password
 
   === TO DO LIST ===
+  Teste 2 não passa. Não faz nenhuma verificação
 
   === NOTES ===
 
