@@ -10,7 +10,6 @@ class UserService {
   }
 
   public async post(user: IUser): Promise<IUser> {
-    console.log(user);
     return this.model.post(user);
   }
 }

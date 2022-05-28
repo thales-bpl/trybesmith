@@ -15,9 +15,9 @@ class UserController {
       await this.userService.post(newUser);
 
       const { username, password } = req.body;
-      const newToken = await generateToken(username, password);
+      const token = await generateToken(username, password);
 
-      return res.status(201).json({ newToken });
+      return res.status(201).json({ token });
     } catch (error) {
       console.log(error);
       return res.status(500).end();
