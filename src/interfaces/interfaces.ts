@@ -18,3 +18,8 @@ export interface IOrder {
   userId: number,
   products?: number[],
 }
+
+export interface ILogin {
+  username: string,
+  password: string,
+}
