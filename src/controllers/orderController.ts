@@ -17,6 +17,22 @@ class OrderController {
       return res.status(500).end();
     }
   };
+
+  // TO-DO: validar JWT e injetar req.user
+  public post = async (req: Request, res: Response) => {
+    try {
+      const userId = req.user.id;
+      const { productsIds } = req.body;
+
+      // if (!userId || !productsIds) throw new Error();
+
+      const newOrder = await this.orderService.postOrder(userId, productsIds);
+      return res.status(201).json(newOrder);
+    } catch (error) {
+      console.log(error);
+      return res.status(500).end();
+    }
+  };
 }
 
 export default OrderController;
