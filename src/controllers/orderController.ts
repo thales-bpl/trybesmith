@@ -1,6 +1,10 @@
 import { Request, Response } from 'express';
 import OrderService from '../services/orderService';
 
+const INVALID_TOKEN = {
+  message: 'Invalid token',
+};
+
 class OrderController {
   private orderService: OrderService;
 
@@ -21,12 +25,16 @@ class OrderController {
   // TO-DO: validar JWT e injetar req.user
   public post = async (req: Request, res: Response) => {
     try {
-      const userId = req.user.id;
+      // console.log('post order controller');
+      const currentUser = req.user;
       const { productsIds } = req.body;
+      // console.log(currentUser);
+      
+      // if (!userId || !productsIds) return res.status(401).json(INVALID_TOKEN);
+      if (typeof currentUser.id === undefined) return res.status(401).json(INVALID_TOKEN);
+      if (!currentUser.id) return res.status(401).json(INVALID_TOKEN);
 
-      // if (!userId || !productsIds) throw new Error();
-
-      const newOrder = await this.orderService.postOrder(userId, productsIds);
+      const newOrder = await this.orderService.postOrder(currentUser.id, productsIds);
       return res.status(201).json(newOrder);
     } catch (error) {
       console.log(error);

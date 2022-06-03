@@ -12,6 +12,10 @@ class UserService {
   public async post(user: IUser): Promise<IUser> {
     return this.model.post(user);
   }
+
+  public async getAll(): Promise<IUser[]> {
+    return this.model.getAll();
+  }
 }
 
 export default UserService;

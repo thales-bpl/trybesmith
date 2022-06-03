@@ -20,6 +20,13 @@ class UserModel {
     const { insertId } = dataInserted;
     return { id: insertId, ...user };
   }
+
+  public async getAll(): Promise<IUser[]> {
+    const query = 'SELECT * FROM Trybesmith.Users;';
+    const result = await this.connection.execute(query);
+    const [rows] = result;
+    return rows as IUser[];
+  }
 }
 
 export default UserModel;

@@ -23,3 +23,8 @@ export interface ILogin {
   username: string,
   password: string,
 }
+
+export interface IToken {
+  username: string;
+  password: string;
+}
