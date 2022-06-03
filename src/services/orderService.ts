@@ -19,9 +19,11 @@ class OrderService {
   }
 
   public async postOrder(userId: number, productsIds: number[]): Promise<IOrder> {
-    await this.model.postOrder(userId);
+    const newOrder = await this.model.postOrder(userId);
 
-    productsIds.forEach((product) => this.productModel.updateProductOrder(userId, product));
+    if (!newOrder.id) throw new Error();
+
+    productsIds.forEach((product) => this.productModel.updateProductOrder(newOrder.id, product));
 
     return { userId, productsIds };
   }
